@@ -13,7 +13,10 @@
         android:theme="@style/Theme.AgendaDeContato"
         tools:targetApi="31">
         <activity
-            android:name=".CadastrarUsuario"
+            android:name=".view.AtualizarContato"
+            android:exported="false" />
+        <activity
+            android:name=".view.CadastrarUsuario"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

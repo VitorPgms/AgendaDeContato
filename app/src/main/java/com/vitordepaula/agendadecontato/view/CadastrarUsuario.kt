@@ -1,4 +1,4 @@
-package com.vitordepaula.agendadecontato
+package com.vitordepaula.agendadecontato.view
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,6 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.vitordepaula.agendadecontato.AppDatabase
+import com.vitordepaula.agendadecontato.R
 import com.vitordepaula.agendadecontato.dao.UsuarioDao
 import com.vitordepaula.agendadecontato.databinding.ActivityCadastrarUsuarioBinding
 import com.vitordepaula.agendadecontato.model.Usuario
