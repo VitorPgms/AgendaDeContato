@@ -6,9 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.vitordepaula.agendadecontato.AppDatabase
+import com.vitordepaula.agendadecontato.dao.UsuarioDao
 import com.vitordepaula.agendadecontato.databinding.ContatoItemBinding
 import com.vitordepaula.agendadecontato.model.Usuario
 import com.vitordepaula.agendadecontato.view.AtualizarContato
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ContatoAdapter(
     private val context: Context,
@@ -37,6 +43,20 @@ class ContatoAdapter(
             intent.putExtra("uid", listaUsuarios[position].uid)
             context.startActivity(intent)
 
+        }
+
+        holder.btnDeletar.setOnClickListener {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val usuario = listaUsuarios[position]
+                val usuarioDao: UsuarioDao = AppDatabase.getIntance(context).usuarioDao()
+                usuarioDao.deletar(usuario.uid)
+                listaUsuarios.remove(usuario)
+
+                withContext(Dispatchers.Main){
+                    notifyDataSetChanged()
+                }
+            }
         }
     }
 
